@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<title>Gherkin Editor</title>
+	</head>
+<body>
+
+<form>
+	<textarea id="editor" name="editor" autofocus>
+Feature: Your feature name
+As a ___
+I want to ___
+So that ___
+
+Scenario: ___
+Given ___
+When ___
+Then ___
+		</textarea>
+		<button id="action__clear">Clear</button>
+</form>
+	
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			border: none;
+		}
+		html, body, form {
+			width: 100%;
+			height: 100%;
+		}
+		textarea[name=editor] {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+
+			padding: 20px;
+			border: none;
+
+			line-height: 1.5rem;
+			font-size: 1rem;
+		}
+		button#action__clear {
+			position: absolute;
+			right: 20px;
+			top: 20px;
+
+			padding: 0.5rem 1rem;
+			border: none;
+
+			border-radius: 2px;
+			background-color: #333333;
+
+			font-size: 1rem;
+			color: #FFF;
+		}
+	</style>
+	<script> 
+		const editor = document.querySelector('#editor');
+		const clearButton = document.querySelector('#action__clear');
+		const saved = window.localStorage.getItem('feature__gherkin-editor');
+		const editorDefault =
+`Feature: Your feature name
+As a ___
+I want to ___
+So that ___
+
+Scenario: ___
+Given ___
+When ___
+Then ___`
+
+		console.log('saved', saved)
+		console.log('editor.value', editor.value)
+
+		if (saved) {
+			editor.value = saved;
+		}
+
+		editor.addEventListener('input', function(){
+			console.log('changed')
+			window.localStorage.setItem('feature__gherkin-editor', editor.value);
+			window.localStorage.setItem('timestamp', (new Date()).getTime());
+		})
+
+		clearButton.addEventListener('click', function(){
+			window.localStorage.setItem('feature__gherkin-editor', editorDefault);
+		})
+	</script>
+</body>
+</html>
