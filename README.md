@@ -2,7 +2,9 @@
 
 A requirements editor is at the core of the Peak Shift DAO — it is meant to bridge between both non-technical and technical collaborators of a project.
 
-Work requirements sent to the Peak Shift DAO need to be written in a specific format called Gherkin — gherkin was designed to reduce ambiguity in the requirements definitions.
+Work requirements sent to the Peak Shift DAO need to be written in a specific format called Gherkin — the Gherkin format is a way to describe the functionality of a system by using Given, When, Then statements.
+
+Gherkin aims to reduce ambiguity when writing requirements by following a specified syntax and was designed to be non-technical and human readable.
 
 ```gherkin
 @backend @python
@@ -46,7 +48,9 @@ Feature: Requirements Editor UI
     Scenario: Edit Requirement
     Scenario: Gherkin is invalid
     Scenario: Gherkin is valid
+```
 
+```gherkin
 @client @browser @localstorage
 Feature: Editor Backup
     Scenario: Load from localstorage
@@ -79,10 +83,6 @@ Feature: Editor Backup
 ```
 
 ### Supplements
-
-##### What is Gherkin?
-
-Gherkin is a way to describe the functionality of a system by using Given, When, Then statements — it was designed to be non-technical and human readable.
 
 ##### Usability
 
